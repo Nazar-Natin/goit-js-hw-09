@@ -8,15 +8,20 @@ function getRandomHexColor() {
 }
 
 let onClick = () => {
-  startBtn.removeEventListener('click', onClick);
-  changeColor = setInterval(() => {
-    container.style.backgroundColor = getRandomHexColor();
-  }, 1000);
+  if (changeColor === null) {
+    startBtn.disabled = true;
+    changeColor = setInterval(() => {
+      container.style.backgroundColor = getRandomHexColor();
+    }, 1000);
+  }
 };
 
 startBtn.addEventListener('click', onClick);
 
 stopBtn.addEventListener('click', () => {
   clearInterval(changeColor);
+  startBtn.disabled = false; // Enable the button after stopping the interval
+  changeColor = null;
   startBtn.addEventListener('click', onClick);
 });
+

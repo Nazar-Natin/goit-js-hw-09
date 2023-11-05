@@ -27,8 +27,7 @@ const options = {
   onClose(selectedDates) {
       let diff = selectedDates[0] - new Date();
       if (diff < 0) {
-          return Notify.failure('Please choose a date in the future');
-        //   return window.alert('Please choose a date in the future');
+          return window.alert('Please choose a date in the future');
       } else { return start.disabled = false}
   },
 };
